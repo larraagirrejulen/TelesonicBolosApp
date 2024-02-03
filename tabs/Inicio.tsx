@@ -7,7 +7,7 @@ import IMAGES from "../assets/images";
 export default function Horas(user:any){
 
     useEffect(()=>{
-        console.log(JSON.stringify(user));
+        //console.log(JSON.stringify(user));
     }, [])
 
     return(

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -31,9 +31,9 @@ const CustomTabBarButton = ({children, onPress}:any) => (
         onPress={onPress}
     >
         <View style={{
-            top: -30,
-            width: 60,
-            height: 60,
+            top: -25,
+            width: 50,
+            height: 50,
             borderRadius: 35,
             justifyContent: 'center',
             alignItems: 'center',
@@ -44,8 +44,7 @@ const CustomTabBarButton = ({children, onPress}:any) => (
         </View>
     </TouchableOpacity> 
 );
-
-export default function Menu(this: any, user:any): React.JSX.Element {
+export default function Menu(this: any, user:any, userToken:any): React.JSX.Element {
 
     return (
         <NavigationContainer>
@@ -60,7 +59,7 @@ export default function Menu(this: any, user:any): React.JSX.Element {
                         right: 15,
                         backgroundColor: "#ffffff",
                         borderRadius: 15,
-                        height: 90,
+                        height: 70,
                         ... styles.shadow
                     }
                 }} >
