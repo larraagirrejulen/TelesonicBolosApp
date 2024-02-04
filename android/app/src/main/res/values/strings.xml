@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TelesonicBolosApp</string>
+    <string name="app_name">Telesonic Bolos</string>
+    <string name="server_client_id">661063684365-k1c4bpn97srmfp4ojoes556t31vatsko.apps.googleusercontent.com</string>
 </resources>
