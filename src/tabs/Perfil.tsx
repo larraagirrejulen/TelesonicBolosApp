@@ -1,35 +1,33 @@
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { Alert, Button, Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import TabBackground from "./TabBackground";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Alert, Button, Image, StatusBar, StyleSheet, Text, View } from "react-native";
 import { useUserContext } from "../ts/context";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function Perfil(){
 
   const {user, setUser} = useUserContext();
 
-  return(
-      <TabBackground>
-          <SafeAreaView style={{ flex: 1 }}>
-              <ScrollView contentContainerStyle={{paddingVertical: 24}}>
-                  <View style={styles.profile}>
-                      <Image alt="" source={{uri: user?.photo as string}} style={styles.profileAvatar} />
-                      <View>
-                          <Text style={styles.profileName}>{user?.name}</Text>
-                          <Text style={styles.profileAddress}>{user?.email}</Text>
-                      </View>
-                  </View>
-                  <Button title="Cerrar Sesión" onPress={()=>{
-                      Alert.alert('Confirma el cierre de sesión:', '', [
-                          {text: 'Aceptar', onPress: () => {GoogleSignin.signOut(); setUser(undefined)}},
-                          {text: 'Cancelar', style: 'cancel'},
-                      ],{cancelable: true,},);
-                  }} color={'#ea493f'}/>
-              </ScrollView>
-          </SafeAreaView>
-      </TabBackground>
-      
-  );
+  useFocusEffect(()=>{
+    StatusBar.setBackgroundColor('rgb(217, 217, 217)')
+  })
+
+  return(<>
+
+    <View style={styles.profile}>
+        <Image alt="" source={{uri: user?.photo as string}} style={styles.profileAvatar} />
+        <View>
+            <Text style={styles.profileName}>{user?.name}</Text>
+            <Text style={styles.profileAddress}>{user?.email}</Text>
+        </View>
+    </View>
+    <Button title="Cerrar Sesión" onPress={()=>{
+        Alert.alert('Confirma el cierre de sesión:', '', [
+            {text: 'Aceptar', onPress: () => {GoogleSignin.signOut(); setUser(undefined)}},
+            {text: 'Cancelar', style: 'cancel'},
+        ],{cancelable: true,},);
+    }} color={'#ea493f'}/>
+  
+  </>);
 }
 
 const styles = StyleSheet.create({

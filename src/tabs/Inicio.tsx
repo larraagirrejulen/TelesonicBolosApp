@@ -1,25 +1,26 @@
 
-import { useEffect } from "react";
-import { Image, StyleSheet, Text } from "react-native";
-import TabBackground from "./TabBackground";
+import { Image, StatusBar, StyleSheet, Text } from "react-native";
 import IMAGES from "../assets/images.js";
 import { useUserContext } from "../ts/context";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function Horas(){
 
     const {user} = useUserContext();
 
-    return(
-      <TabBackground>
-        <Image source={IMAGES.logo} style={styles.userImage} resizeMode='contain' />
-        <Text style={styles.text}>Bienvenido {user?.name?.split(' ')[0]}!</Text>
-      </TabBackground>
-    );
+    useFocusEffect(()=>{
+      StatusBar.setBackgroundColor('rgb(217, 217, 217)')
+    })
+
+    return(<>
+      <Image source={IMAGES.logo} style={styles.userImage} resizeMode='contain' />
+      <Text style={styles.text}>Bienvenido {user?.name?.split(' ')[0]}!</Text>
+    </>);
 }
 
 const styles = StyleSheet.create({
     userImage: { 
-      marginTop: 100, 
+      marginTop: 110, 
       marginBottom: 20, 
       width: 100,
       height: 100
