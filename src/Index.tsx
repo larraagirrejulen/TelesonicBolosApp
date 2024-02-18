@@ -3,17 +3,17 @@ import React, { useEffect, useState } from 'react';
 import {GoogleSignin, User} from '@react-native-google-signin/google-signin';
 
 import { SCOPE, WEB_CLIENT_ID } from '@env';
-import { UserContext } from './ts/context.ts';
-
-import LogIn from "./LogIn.tsx";
-import TabBar from './TabBar.tsx';
+import { UserContext } from 'contexts/userContext';
+ 
+import LogIn from 'components/LogIn';
+import TabBar from 'components/TabBar';
 
 
 export default function App() {
 
-  const [user, setUser] = useState<User['user']>();
+  const [user, setUser] = useState<User['user'] | undefined>(undefined);
 
-  const [initializing, setInitializing] = useState(true);
+  const [initializingApp, setInitializingApp] = useState(true);
 
   useEffect(()=>{
 
@@ -26,11 +26,11 @@ export default function App() {
     GoogleSignin.signInSilently()
     .then(userInfo => userInfo && setUser(userInfo.user))
     .catch(error => console.log("Silent signIn error: " + error.message))
-    .finally(() => {setInitializing(false)})
+    .finally(() => setInitializingApp(false));
     
   }, []);
 
-  return ( initializing ? <></> :
+  return ( initializingApp ? <></> :
     <UserContext.Provider value={{user, setUser}}>
       {user ? <TabBar/> : <LogIn/>} 
     </UserContext.Provider>
