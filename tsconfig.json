@@ -5,13 +5,11 @@
     "skipLibCheck": true, // Skip type checking all .d.ts files
     "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"],
-      "contexts/*": ["./src/contexts/*"],
-      "styles/*": ["./src/styles/*"],
-      "components/*": ["./src/components/*"],
       "assets/*": ["./src/assets/*"],
-      "tabs/*": ["./src/components/tabs/*"],
-      "typeScripts": ["src/contexts/*"],
+      "components/*": ["./src/components/*"],
+      "config/*": ["./src/config/*"],
+      "contexts/*": ["./src/contexts/*"],
+      "customWidgets/*": ["./src/customWidgets/*"],
     }
   }
 }

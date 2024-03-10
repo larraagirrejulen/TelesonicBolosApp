@@ -10,13 +10,11 @@ module.exports = {
       'module-resolver',
       {
         alias: {
-          src: './src',
-          contexts: "./src/contexts",
-          styles: "./src/styles",
           assets: './src/assets',
           components: './src/components',
-          tabs: './src/components/tabs',
-          typeScripts: './src/ts',
+          config: './src/config',
+          contexts: "./src/contexts",
+          customWidgets: "./src/customWidgets",
         },
       },
     ],
